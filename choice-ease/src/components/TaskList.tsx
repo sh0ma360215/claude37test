@@ -9,6 +9,14 @@ export default function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   
+  // 全タスク削除関数を追加
+  const deleteAllTasks = () => {
+    if (window.confirm('全てのタスクを削除してもよろしいですか？')) {
+      setTasks([]);
+      setSelectedTask(null);
+    }
+  };
+  
   // タスク追加関数を修正
   const addTask = () => {
     if (!newTaskTitle.trim()) return;
@@ -47,9 +55,20 @@ export default function TaskList() {
   
   return (
     <div className="max-w-md mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-4">タスクリスト</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">タスク決断ルーレット</h1>
+        {tasks.length > 0 && (
+          <button 
+            onClick={deleteAllTasks}
+            className="px-4 py-2 rounded-md text-sm bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-900/60 transition-colors"
+          >
+            全て削除
+          </button>
+        )}
+      </div>
       
       {/* タスク追加フォームをテキストエリアに変更 */}
+      <h2 className="text-xl font-bold">タスク入力エリア</h2>
       <div className="flex mb-4">
         <textarea
           value={newTaskTitle}
