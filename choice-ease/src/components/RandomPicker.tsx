@@ -62,7 +62,7 @@ export default function RandomPicker({ tasks, onSelect }: RandomPickerProps) {
   };
   
   return (
-    <div className="mt-6 text-center">
+    <div>
       <button
         onClick={pickRandom}
         disabled={isSpinning || tasks.filter(t => !t.completed).length === 0}

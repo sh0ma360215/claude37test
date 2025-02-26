@@ -84,6 +84,11 @@ export default function TaskList() {
         </button>
       </div>
 
+      {/* ランダムピッカーを入力エリアの下に移動 */}
+      <div className="flex justify-center my-6">
+        <RandomPicker tasks={tasks} onSelect={handleSelectTask} />
+      </div>
+
       {/* 選択されたタスクの表示 */}
       {selectedTask && (
         <div className="my-6 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl border-2 border-yellow-300 dark:border-yellow-700 shadow-lg transform transition-all duration-500 hover:scale-105">
@@ -130,8 +135,6 @@ export default function TaskList() {
           </li>
         ))}
       </ul>
-    {/* ランダムピッカー */}
-    <RandomPicker tasks={tasks} onSelect={handleSelectTask} />
     </div>
   );
 }
